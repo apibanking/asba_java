@@ -1,5 +1,10 @@
 # asba_java
 
-To compile
+To generate classes
+  wsimport ASBAService.wsdl -extension
 
-wsimport ASBAService.wsdl -extension
+To compile
+  javac Asba.java -classpath .
+  
+To run
+  java Asba
