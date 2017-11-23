@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ASBAService" targetNamespace="http://www.quantiguous.com/services" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://www.quantiguous.com/services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <binding hasEncoding="false" imported="true" name="ASBAServiceHttpBinding" originalBindingStyle="document"/>
+        <generatedXSD location="ASBAService_InlineSchema1.xsd"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  
+ 
+  <wsdl:types>
+    
+        <xsd:schema targetNamespace="http://www.quantiguous.com/services" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+      <xsd:include schemaLocation="ASBAService_InlineSchema1.xsd"/>
+    </xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="addHoldRequestMsg">
+    <wsdl:part element="tns:addHold" name="addHoldParameters"/>
+  </wsdl:message>
+  <wsdl:message name="addHoldResponseMsg">
+    <wsdl:part element="tns:addHoldResponse" name="addHoldResult"/>
+  </wsdl:message>
+    <wsdl:message name="modifyHoldRequestMsg">
+    <wsdl:part element="tns:modifyHold" name="modifyHoldParameters"/>
+  </wsdl:message>
+    <wsdl:message name="modifyHoldResponseMsg">
+    <wsdl:part element="tns:modifyHoldResponse" name="modifyHoldResult"/>
+  </wsdl:message>
+    <wsdl:message name="withdrawHoldRequestMsg">
+    <wsdl:part element="tns:withdrawHold" name="withdrawHoldParameters"/>
+  </wsdl:message>
+    <wsdl:message name="withdrawHoldResponseMsg">
+    <wsdl:part element="tns:withdrawHoldResponse" name="withdrawHoldResult"/>
+  </wsdl:message>
+    <wsdl:message name="inquireHoldRequestMsg">
+    <wsdl:part element="tns:inquireHold" name="inquireHoldParameters"/>
+  </wsdl:message>
+    <wsdl:message name="inquireHoldResponseMsg">
+    <wsdl:part element="tns:inquireHoldResponse" name="inquireHoldResult"/>
+  </wsdl:message>
+
+    <wsdl:portType name="ASBAService">
+    <wsdl:operation name="addHold">
+      <wsdl:documentation>This operation is to hold the shares. If an investor is applying through ASBA, his application money shall be debited from the bank account only if his/her application is selected for allotment after the basis of allotment is finalized</wsdl:documentation>
+      <wsdl:input message="tns:addHoldRequestMsg" name="addHoldRequest"/>
+      <wsdl:output message="tns:addHoldResponseMsg" name="addHoldResponse"/>
+    </wsdl:operation>
+        <wsdl:operation name="modifyHold">
+      <wsdl:documentation>This operation is to for modify the shares which is held.</wsdl:documentation>
+      <wsdl:input message="tns:modifyHoldRequestMsg" name="modifyHoldRequest"/>
+      <wsdl:output message="tns:modifyHoldResponseMsg" name="modifyHoldResponse"/>
+    </wsdl:operation>
+        <wsdl:operation name="withdrawHold">
+      <wsdl:documentation>This is to withdraw the shares which are held.</wsdl:documentation>
+      <wsdl:input message="tns:withdrawHoldRequestMsg" name="withdrawHoldRequest"/>
+      <wsdl:output message="tns:withdrawHoldResponseMsg" name="withdrawHoldResponse"/>
+    </wsdl:operation>
+        <wsdl:operation name="inquireHold">
+      <wsdl:documentation>This is to check the status of the held shares.</wsdl:documentation>
+      <wsdl:input message="tns:inquireHoldRequestMsg" name="inquireHoldRequest"/>
+      <wsdl:output message="tns:inquireHoldResponseMsg" name="inquireHoldResponse"/>
+    </wsdl:operation>
+    </wsdl:portType>
+    
+    <wsdl:binding name="ASBAServiceHttpBinding" type="tns:ASBAService">
+        <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="addHold">
+            <soap12:operation soapAction="http://www.quantiguous.com/services/addHold"/>
+            <wsdl:input name="addHoldRequest">
+                <soap12:body use="literal"/>
+            </wsdl:input>
+      <wsdl:output name="addHoldResponse">
+                <soap12:body use="literal"/>
+            </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifyHold">
+            <soap12:operation soapAction="http://www.quantiguous.com/services/modifyHold"/>
+            <wsdl:input name="modifyHoldRequest">
+                <soap12:body use="literal"/>
+            </wsdl:input>
+      <wsdl:output name="modifyHoldResponse">
+                <soap12:body use="literal"/>
+            </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="withdrawHold">
+            <soap12:operation soapAction="http://www.quantiguous.com/services/withdrawHold"/>
+            <wsdl:input name="withdrawHoldRequest">
+                <soap12:body use="literal"/>
+            </wsdl:input>
+      <wsdl:output name="withdrawHoldResponse">
+                <soap12:body use="literal"/>
+            </wsdl:output>
+    </wsdl:operation>
+        <wsdl:operation name="inquireHold">
+      <soap12:operation soapAction="http://www.quantiguous.com/services/inquireHold"/>
+      <wsdl:input name="inquireHoldRequest">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="inquireHoldResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ASBAServiceHttpService">
+    <wsdl:port binding="tns:ASBAServiceHttpBinding" name="ASBAServiceHttpPort">
+      <soap12:address location="/ASBAService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
